@@ -1,0 +1,113 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 864457a3bd2d435c4733c7178434748fc75559558521e7ed3f9eed5764334056
+
+name:           mainServer
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/mainServer#readme>
+homepage:       https://github.com/githubuser/mainServer#readme
+bug-reports:    https://github.com/githubuser/mainServer/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/mainServer
+
+library
+  exposed-modules:
+      ServersEndpoints
+      UserEndpoints
+  other-modules:
+      Paths_mainServer
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , blaze-html
+    , blaze-markup
+    , bytestring
+    , directory
+    , filepath
+    , http-client
+    , http-media
+    , http-types
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , time
+    , wai
+    , warp
+  default-language: Haskell2010
+
+executable mainServer-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_mainServer
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base
+    , blaze-html
+    , blaze-markup
+    , bytestring
+    , directory
+    , filepath
+    , http-client
+    , http-media
+    , http-types
+    , mainServer
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , time
+    , wai
+    , warp
+  default-language: Haskell2010
+
+test-suite mainServer-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_mainServer
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base
+    , blaze-html
+    , blaze-markup
+    , bytestring
+    , directory
+    , filepath
+    , hspec
+    , hspec-wai
+    , hspec-wai-json
+    , http-client
+    , http-media
+    , http-types
+    , mainServer
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , time
+    , wai
+    , warp
+  default-language: Haskell2010
