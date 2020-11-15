@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  main_server:
+
+    build: servers/mainServer
+
+    network_mode: host
+
+    command: stack exec mainServer-exe
+
+    ports:
+      - 8082:8082
+
+  server1:
+
+    build: servers/server1
+
+    command: stack exec server-exe
+
+    ports:
+      - 8080:8080
+ 
+    depends_on:
+      - main_server
+
+  server2:
+
+    build: servers/server2
+
+    command: stack exec server-exe
+
+    ports:
+      - 8081:8081
+ 
+    depends_on:
+      - main_server

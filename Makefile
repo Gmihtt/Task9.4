@@ -1,11 +1,6 @@
-.PHONY: build start stop clean healthcheck delete
+.PHONY: build buildApp start stop healthcheck
 
 DOCKER := $(shell command -v docker 2> /dev/null)
-
-PORT := 8080:8080
-
-clean:
-	rm -rf ./files ./var
 
 healthcheck:
 ifndef DOCKER
@@ -13,16 +8,16 @@ ifndef DOCKER
 endif
 	@echo "everything is good"
 
-build: clean ./Dockerfile
-	sudo docker build -t gmihtt/server .
+build: ./Dockerfile
+	sudo docker build -t gmihtt/main_server .
 
-start: ./Dockerfile
-	sudo docker run -dp $(PORT) -it --name run-server --rm gmihtt/server
+buildApp: ./docker-compose.yml
+	sudo docker-compose build
 
-stop: ./Dockerfile
-	sudo docker stop run-server
+start: ./docker-compose.yml
+	sudo docker-compose up -d
 
-delete: clean ./Dockerfile
-	sudo docker rm run-server
+stop: ./docker-compose.yml
+	sudo docker-compose down
 
 

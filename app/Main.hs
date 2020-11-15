@@ -5,4 +5,4 @@ import UserEndpoints (app)
 
 main :: IO ()
 main =
-  run 8080 app
+  run 8082 app
