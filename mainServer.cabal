@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 864457a3bd2d435c4733c7178434748fc75559558521e7ed3f9eed5764334056
+-- hash: c76c05f082e9facc7be3250a69cb61c753c3c79ce2d3b965607b2eead1f66efc
 
 name:           mainServer
 version:        0.1.0.0
@@ -44,6 +44,8 @@ library
     , http-media
     , http-types
     , mtl
+    , random
+    , random-shuffle
     , servant
     , servant-client
     , servant-server
@@ -72,6 +74,8 @@ executable mainServer-exe
     , http-types
     , mainServer
     , mtl
+    , random
+    , random-shuffle
     , servant
     , servant-client
     , servant-server
@@ -104,6 +108,8 @@ test-suite mainServer-test
     , http-types
     , mainServer
     , mtl
+    , random
+    , random-shuffle
     , servant
     , servant-client
     , servant-server

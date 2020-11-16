@@ -36,6 +36,8 @@ dependencies:
 - servant-client
 - http-client
 - filepath
+- random
+- random-shuffle
 
 library:
   source-dirs: src

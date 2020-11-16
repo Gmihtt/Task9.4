@@ -9,6 +9,7 @@
 module ServersEndpoints (callServer, getFromServer, putFromServer, delFromServer) where
 
 import qualified Servant.API.Verbs as Verbs
+import System.Random ( getStdGen, Random(randomRs) )
 import Data.Aeson (Value)
 import Servant
 import Network.HTTP.Client (newManager, defaultManagerSettings)
@@ -31,10 +32,11 @@ getFromServer :<|> putFromServer :<|> delFromServer = client resApi
 
 callServer :: Show a => ClientM a -> IO (Either ClientError a) 
 callServer task = do
-    res <- call 8081
-    case res of
-      Left _ -> call 8080 >>= pure
-      resp -> pure resp
+    g <- getStdGen
+    let roll = head (randomRs (1 :: Int, 3 :: Int) g)
+    case roll of
+      1 -> call 8081
+      _ -> call 8080 >>= pure
     where
       call port = do
         manager' <- newManager defaultManagerSettings
