@@ -18,9 +18,9 @@ start: ./docker-compose.yml
 	sudo docker-compose up -d
 
 pull: ./docker-compose.yml
-	sudo docker pull gmihtt/server
+	sudo docker pull gmihtt/multi-layer
 	sudo docker pull gmihtt/multir_server
-	sudo docker pull gmihtt/server8081
+	sudo docker gmihtt/multi-layer8081
 	sudo docker pull mongo
 	sudo docker pull redis
 
